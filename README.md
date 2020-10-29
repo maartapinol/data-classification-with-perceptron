@@ -5,4 +5,4 @@ Perceptron is a supervised algorithm for binary classification i.e. elements are
 
 Perceptron uses the following linear prediction function as a classifier of the input vectors in two classes or labels:
 
-https://render.githubusercontent.com/render/math?math=e%5E%7Bi%20%5Cpi%7D%20%3D%20-1&mode=inline
+![equation](http://www.sciweavers.org/tex2img.php?eq=1%2Bsin%28mc%5E2%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
