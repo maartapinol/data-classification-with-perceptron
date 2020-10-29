@@ -16,3 +16,10 @@ The Perceptron algorithm, as all the supervised techniques, consists of two phas
 •	Training phase: we take a subset of data from our dataset with which we are going to train our model so that it "learns to predict".
 
 •	Testing phase: we take the remaining data subset from our dataset and with it we check that our previously trained model is able to correctly predict new observations that have not appeared in the training data set.
+
+To run Perceptron.py or Perceptron-withl2.py
+
+1. Add "x1,x2,x3,x4,y" as the first line of both test.data and train.data
+2. Open any of the codes with a tool such as Visual Studio
+3. Change the values according of what classes are wanted to compare, number of iterations or l2 regularisation coefficient (the last only for Perceptron-withl2.py) - lines 65-69
+4. Run the program
