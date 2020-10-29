@@ -2,32 +2,32 @@ import numpy as np
 import pandas as pd
 
 
-def PerceptronTraining(TrainData, labelVar, class1, class2, MaxNumIter):
+def PerceptronTraining(TrainingData, labelVar, class1, class2, MaxNumIter):
 
     ### Pre training ###
     classes = class1+class2 # classes to discriminate
-    TrainData = TrainData[TrainData[labelVar].isin(classes)] # filter the df by the classes
+    TrainingData = TrainingData[TrainingData[labelVar].isin(classes)] # filter the df by the classes
 
-    TrainDataX = TrainData.drop(labelVar, axis=1) # df for features
-    TrainDataY = TrainData[labelVar] # original labels
-    TrainDataY = np.where(TrainDataY.isin(class1), 1, -1) # set one class to 1 and the other to -1
+    TrainingDataX = TrainingData.drop(labelVar, axis=1) # df for features
+    TrainingDataY = TrainingData[labelVar] # original labels
+    TrainingDataY = np.where(TrainingDataY.isin(class1), 1, -1) # set one class to 1 and the other to -1
     
     ### Initialization ###
-    weights=[0]*len(TrainDataX.columns) # initialize weights to 0
+    weights=[0]*len(TrainingDataX.columns) # initialize weights to 0
     bias = 0 # initialize bias to 0
     
     ### Iterations ###
     for iter in list(range(MaxNumIter)):
         
-        for i in list(range(len(TrainDataX))):
-            a = sum(weights*TrainDataX.iloc[i]) + bias # compute activation
+        for i in list(range(len(TrainingDataX))):
+            a = sum(weights*TrainingDataX.iloc[i]) + bias # compute activation
             
-            if float(TrainDataY[i]*a) <= 0: 
-                weights = weights + TrainDataY[i]*TrainDataX.iloc[i] # update weights
-                bias = bias + TrainDataY[i] # update bias
+            if float(TrainingDataY[i]*a) <= 0: 
+                weights = weights + TrainingDataY[i]*TrainingDataX.iloc[i] # update weights
+                bias = bias + TrainingDataY[i] # update bias
     
     sign_a = np.sign(a) # compute sign of the activation values
-    accuracy = sum(TrainDataY == sign_a)/(sum(TrainDataY == sign_a) + sum(TrainDataY != sign_a)) # compute accuracies
+    accuracy = sum(TrainingDataY == sign_a)/(sum(TrainingDataY == sign_a) + sum(TrainingDataY != sign_a)) # compute accuracies
     
     return weights, bias, accuracy
 
@@ -67,5 +67,3 @@ print("Weights: \n", w, "\nbias:", b, "\nTrain Classification Accuracy:", train_
 
 test_accuracy = PerceptronTesting(testdf, y, class1, class2, w, b)
 print("Test Classification Accuracy: ", test_accuracy)
-
-
